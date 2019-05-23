@@ -4,7 +4,6 @@ const jwt = require('jsonwebtoken');
 
 const User = require('../models/user');
 
-
 // unrestricted
 exports.register = function(req, res) {    
     User
@@ -120,14 +119,30 @@ exports.getUser = function(req, res) {
         .then((data) => res.status(200).json(data))
 }
 
+exports.updateUser = function(req, res) {
+    console.log(req.body.firstName);
+    User
+        .updateOne({ _id:req.params.id },
+        {$set: {
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            email: req.body.email,
+            //Password
+            billingAddress: req.body.billingAddress,
+            billingPostalNumber: req.body.billingPostalNumber,
+            billingCity: req.body.billingCity,
+            billingCountry: req.body.billingCountry,
+            shippingAddress: req.body.shippingAddress,
+            shippingPostalNumber: req.body.shippingPostalNumber,
+            shippingCity: req.body.shippingCity,
+            shippingCountry: req.body.shippingCountry
+        }})
+        .catch(function(error, affected, resp) {
+            console.log(error);
+        })
+}
+
 
 // restricted
-exports.getUsers = function(req, res) {}
-
-/* exports.getUser(id) = function(req, res) {
-    User.findOne({ _id: id })
-        .then((data) => res.status(200).json(data))
-        .catch((error) => res.status(500).json(error))
-} */
-exports.updateUser = function(req, res) {}
-exports.deleteUser = function(req, res) {}
+/* exports.getUsers = function(req, res) {}
+exports.deleteUser = function(req, res) {} */
