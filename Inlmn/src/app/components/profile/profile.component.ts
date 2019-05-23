@@ -52,7 +52,7 @@ export class ProfileComponent implements OnInit {
   }
   
   test() {
-
+    console.log(this.editForm.value);
   }
 
 
@@ -75,14 +75,9 @@ export class ProfileComponent implements OnInit {
       }))
     }
 
-/*     updateInfo() {
-      this.authService.updateUser(this.editForm.value).subscribe((registerres) => {
-        if(registerres["success"]) {
-              console.log("Funkar lol")
-        } else {
-          return;
-        }
+    updateInfo() {
+      this.authService.updateUser(this.editForm.value).subscribe((resp) => {
+       this.getInfo();
       })
-    } */
-    
+    }
 }

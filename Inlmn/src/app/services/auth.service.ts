@@ -36,8 +36,7 @@ export class AuthService {
 
   public updateUser(userInfo: User) {
     let id = localStorage.getItem("USER_ID");
-    //return this.http.put(`${this._apiurl}/users/${id}`, userInfo);
-    console.log(userInfo);
+    return this.http.put(`${this._apiurl}/users/update/${id}`, userInfo);
   } 
 }
 
