@@ -20,3 +20,95 @@ X Det ska kunna gå och logga in med denna användare och gå in på profilsidan
 * det ska även kunna gå och logga ut. När du är inloggad ska du inte kunna komma åt registrerasidan eller loggainsidan.
 * Användaren fullständiga namn ska skrivas ut längst upp på sidan.
 * Det ska kunna gå och navigera mellan sidorna. 
+
+
+<div class="container">
+  <div id="profile" *ngIf="user">
+    <span>Välkommen Christoffer Cajander!</span>
+    <span style="float: right" (click)="logout()">Logga ut <i class="fas fa-sign-out-alt"></i></span>
+    <div id="profile-info" class="profile-info" *ngIf="!editingInfo">
+      <fieldset>
+          <legend><i class="far fa-id-card"></i> Kontoinformation</legend>
+          <div><i class="fas fa-user-alt"></i> {{ user.firstName }} {{ user.lastName }} | {{ user.birthDate }}</div>
+          <hr>
+          <div>
+            <i class="fas fa-envelope"></i> {{ user.email }}
+          </div>
+          <div><i class="fas fa-key"></i> ********</div>
+          <hr>
+          <div>
+            <div><i class="fas fa-map-pin"></i> {{ user.shippingAddress }}</div>
+            <div>{{ user.shippingPostalNumber }} {{ user.shippingCity }}</div>
+          </div>
+          <hr>
+          <div>
+            <div><i class="fas fa-file-invoice"></i> {{ user.billingAddress }}</div>
+            <div>{{ user.billingPostalNumber }} {{ user.billingCity }}</div>
+          </div>
+          <hr>
+          <button class="button dark" (click)="editingInfo = true"><i class="fas fa-edit"></i> Ändra</button>
+      </fieldset>
+    </div>
+
+    <form [formGroup]="editForm" (submit)="test()" id="register-form" *ngIf="editingInfo" class="container">
+        <fieldset>
+            <legend><i class="far fa-id-card"></i> Kontoinformation</legend>
+            <div>
+              <i class="fas fa-user-alt"></i>
+              <input class="edit-input" type="text" FormControlName="firstName" id="firstName">
+              <input class="edit-input" type="text" FormControlName="lastName">
+            </div>
+            <hr>
+            <div>
+              <i class="fas fa-envelope"></i>
+              <input class="edit-input full-w" type="email" FormControlName="email">
+            </div>
+            <div>
+              <i class="fas fa-key"></i>
+              <input class="edit-input" type="password" placeholder="New password" FormControlName="password">
+              </div>
+            <hr>
+            <div>
+              <div>
+                <i class="fas fa-map-pin"></i>
+                <input class="edit-input" type="text" FormControlName="shippingAddress">
+              </div>
+              <div>
+                  <input class="edit-input" type="text" FormControlName="shippingPostalNumber">
+                  <input class="edit-input" type="text" FormControlName="shippingCity">
+              </div>
+            </div>
+            <hr>
+            <div>
+              <div>
+                <i class="fas fa-file-invoice"></i> 
+                <input class="edit-input" type="text" FormControlName="billingAddress">
+              </div>
+              <div>
+                <input class="edit-input" type="text" FormControlName="billingPostalNumber">
+                <input class="edit-input" type="text" FormControlName="billingCity">
+              </div>
+            </div>
+            <hr>
+            <button class="button success" type="submit"><i class="fas fa-save"></i> Spara</button>
+        </fieldset>
+      </form>
+    </div>
+</div>
+
+
+
+    this.editForm = this.formBuilder.group({
+      'firstName': [''],
+      'lastName': [''],
+      'email': [''],
+      'password': [''],
+      'billingAddress': [''],
+      'billingPostalNumber': [''],
+      'billingCity': [''],
+      //'billingCountry': [''],
+      'shippingAddress': [''],
+      'shippingPostalNumber': [''],
+      'shippingCity': [''],
+      //'shippingCountry': ['']
+    })

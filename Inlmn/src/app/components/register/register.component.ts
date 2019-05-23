@@ -69,10 +69,10 @@ export class RegisterComponent implements OnInit {
       regForm['shippingCity'].setValue(regForm['billingCity'].value);
       regForm['shippingCountry'].setValue(regForm['billingCountry'].value);
     } else {
-      this.registerForm.controls['shippingAddress'].setValue("");
-      this.registerForm.controls['shippingPostalNumber'].setValue("");
-      this.registerForm.controls['shippingCity'].setValue("");
-      this.registerForm.controls['shippingCountry'].setValue("");
+      regForm['shippingAddress'].setValue("");
+      regForm['shippingPostalNumber'].setValue("");
+      regForm['shippingCity'].setValue("");
+      regForm['shippingCountry'].setValue("");
     }
   }
 }

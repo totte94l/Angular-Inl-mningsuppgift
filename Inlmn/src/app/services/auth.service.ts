@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { User } from '../user';
 import { HttpClient } from '@angular/common/http';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -34,5 +33,11 @@ export class AuthService {
     let id = localStorage.getItem("USER_ID");
     return this.http.get(`${this._apiurl}/users/${id}`);
   }
+
+  public updateUser(userInfo: User) {
+    let id = localStorage.getItem("USER_ID");
+    //return this.http.put(`${this._apiurl}/users/${id}`, userInfo);
+    console.log(userInfo);
+  } 
 }
 

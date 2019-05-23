@@ -10,6 +10,11 @@
     padding: 20px;
 }
 
+form {
+    width: 400px;
+    padding: 20px;
+}
+
 fieldset {
     background: rgba(109, 109, 109, 0.1);
     border: 1px solid rgba(53, 53, 53, 0.3);

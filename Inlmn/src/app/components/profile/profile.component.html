@@ -1,73 +1,76 @@
 <div class="container">
-  <div id="profile" *ngIf="user">
-    <span>Välkommen Christoffer Cajander!</span>
-    <span style="float: right" (click)="logout()">Logga ut <i class="fas fa-sign-out-alt"></i></span>
-    <div id="profile-info" class="profile-info" *ngIf="!editingInfo">
-      <fieldset>
-          <legend><i class="far fa-id-card"></i> Kontoinformation</legend>
-          <div><i class="fas fa-user-alt"></i> {{ user.firstName }} {{ user.lastName }} | {{ user.birthDate }}</div>
-          <hr>
-          <div>
-            <i class="fas fa-envelope"></i> {{ user.email }}
-          </div>
-          <div><i class="fas fa-key"></i> ********</div>
-          <hr>
-          <div>
-            <div><i class="fas fa-map-pin"></i> {{ user.shippingAddress }}</div>
-            <div>{{ user.shippingPostalNumber }} {{ user.shippingCity }}</div>
-          </div>
-          <hr>
-          <div>
-            <div><i class="fas fa-file-invoice"></i> {{ user.billingAddress }}</div>
-            <div>{{ user.billingPostalNumber }} {{ user.billingCity }}</div>
-          </div>
-          <hr>
-          <button class="button dark" (click)="editingInfo = true"><i class="fas fa-edit"></i> Ändra</button>
-      </fieldset>
-    </div>
-
-    <div id="edit-profile-info" class="profile-info" *ngIf="editingInfo">
+    <div id="profile" *ngIf="user">
+      <span>Välkommen Christoffer Cajander!</span>
+      <span style="float: right" (click)="logout()">Logga ut <i class="fas fa-sign-out-alt"></i></span>
+      <div id="profile-info" class="profile-info" *ngIf="!editingInfo">
         <fieldset>
             <legend><i class="far fa-id-card"></i> Kontoinformation</legend>
+            <div><i class="fas fa-user-alt"></i> {{ user.firstName }} {{ user.lastName }} | {{ user.birthDate }}</div>
+            <hr>
             <div>
-              <i class="fas fa-user-alt"></i>
-              <input class="edit-input" type="text" value="{{ user.firstName }}" id="">
-              <input class="edit-input" type="text" value="{{ user. lastName }}">
+              <i class="fas fa-envelope"></i> {{ user.email }}
+            </div>
+            <div><i class="fas fa-key"></i> ********</div>
+            <hr>
+            <div>
+              <div><i class="fas fa-map-pin"></i> {{ user.shippingAddress }}</div>
+              <div>{{ user.shippingPostalNumber }} {{ user.shippingCity }}, {{ user.shippingCountry }}</div>
             </div>
             <hr>
             <div>
-              <i class="fas fa-envelope"></i>
-              <input class="edit-input full-w" type="email" value="{{ user.email }}">
-            </div>
-            <div>
-              <i class="fas fa-key"></i>
-              <input class="edit-input" type="password" placeholder="New password">
-              </div>
-            <hr>
-            <div>
-              <div>
-                <i class="fas fa-map-pin"></i>
-                <input class="edit-input" type="text" value="{{ user.shippingAddress }}">
-              </div>
-              <div>
-                  <input class="edit-input" type="text" value="{{ user.shippingPostalNumber }}">
-                  <input class="edit-input" type="text" value="{{ user.shippingCity }}">
-              </div>
+              <div><i class="fas fa-file-invoice"></i> {{ user.billingAddress }}</div>
+              <div>{{ user.billingPostalNumber }} {{ user.billingCity }}, {{ user.billingCountry}}</div>
             </div>
             <hr>
-            <div>
-              <div>
-                <i class="fas fa-file-invoice"></i> 
-                <input class="edit-input" type="text" value="{{ user.billingAddress }}">
-              </div>
-              <div>
-                <input class="edit-input" type="text" value="{{ user.billingPostalNumber }}">
-                <input class="edit-input" type="text" value="{{ user.billingCity}}">
-              </div>
-            </div>
-            <hr>
-            <button class="button success" (click)="test()"><i class="fas fa-save"></i> Spara</button>
+            <button class="button dark" (click)="editingInfo = true"><i class="fas fa-edit"></i> Ändra</button>
         </fieldset>
       </div>
+  
+      <form [formGroup]="editForm" (submit)="updateInfo()" id="register-form" *ngIf="editingInfo" class="container">
+          <fieldset>
+              <legend><i class="far fa-id-card"></i> Kontoinformation</legend>
+              <div>
+                <i class="fas fa-user-alt"></i>
+                <input class="edit-input" type="text" formControlName="firstName" placeholder="Förnamn">
+                <input class="edit-input" type="text" formControlName="lastName" placeholder="Efternamn">
+              </div>
+              <hr>
+              <div>
+                <i class="fas fa-envelope"></i>
+                <input class="edit-input full-w" type="email" formControlName="email" placeholder="E-postadress">
+              </div>
+              <div>
+                <i class="fas fa-key"></i>
+                <input class="edit-input" type="password" placeholder="New password" formControlName="password">
+                </div>
+              <hr>
+              <div>
+                <div>
+                  <i class="fas fa-map-pin"></i>
+                  <input class="edit-input" type="text" formControlName="shippingAddress" placeholder="Fraktadress">
+                </div>
+                <div>
+                    <input class="edit-input" type="text" formControlName="shippingPostalNumber" placeholder="Postnummer">
+                    <input class="edit-input" type="text" formControlName="shippingCity" placeholder="Stad">
+                    <input class="edit-input" type="text" formControlName="shippingCountry" placeholder="Land">
+                </div>
+              </div>
+              <hr>
+              <div>
+                <div>
+                  <i class="fas fa-file-invoice"></i> 
+                  <input class="edit-input" type="text" formControlName="billingAddress" placeholder="Fakturaadress">
+                </div>
+                <div>
+                  <input class="edit-input" type="text" formControlName="billingPostalNumber" placeholder="Postnummer">
+                  <input class="edit-input" type="text" formControlName="billingCity" placeholder="Stad">
+                  <input class="edit-input" type="text" formControlName="billingCountry" placeholder="Land">
+                </div>
+              </div>
+              <hr>
+              <button class="button success" type="submit"><i class="fas fa-save"></i> Spara</button>
+              <button (click)="test()">testknappeN</button>
+          </fieldset>
+        </form>
+      </div>
   </div>
-</div>
