@@ -181,13 +181,3 @@ exports.updateUser = function(req, res) {
 
    
 }
-
-
-/* encrypt.hash(req.body.password, 10, function(error, hash) {
-    if(error) {
-        return res.status(500).json({ 
-            error: error,
-            message: ` ${req.body.email}`
-        });
-    }
-    else { */

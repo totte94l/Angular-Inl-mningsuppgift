@@ -1,0 +1,45 @@
+Inlmn/node_modules
+RESTAPI/node_modules
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+Inlmn/dist
+Inlmn/tmp
+Inlmn/out-tsc
+# Only exists if Bazel was run
+Inlmn/bazel-out
+
+# profiling files
+Inlmn/chrome-profiler-events.json
+Inlmn/speed-measure-plugin.json
+
+# IDEs and editors
+/.idea
+Inlmn/.project
+Inlmn/.classpath
+Inlmn/.c9/
+Inlmn/*.launch
+Inlmn/.settings/
+Inlmn/*.sublime-workspace
+
+# IDE - VSCode
+Inlmn/.vscode/*
+Inlmn/!.vscode/settings.json
+Inlmn/!.vscode/tasks.json
+Inlmn/!.vscode/launch.json
+Inlmn/!.vscode/extensions.json
+Inlmn/.history/*
+
+# misc
+Inlmn/.sass-cache
+Inlmn/connect.lock
+Inlmn/coverage
+Inlmn/libpeerconnection.log
+Inlmn/npm-debug.log
+Inlmn/yarn-error.log
+Inlmn/testem.log
+Inlmn/typings
+
+# System Files
+Inlmn/.DS_Store
+Inlmn/Thumbs.db
