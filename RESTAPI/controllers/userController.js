@@ -4,7 +4,6 @@ const jwt = require('jsonwebtoken');
 
 const User = require('../models/user');
 
-// unrestricted
 exports.register = function(req, res) {    
     User
         .find({ email: req.body.email })
@@ -177,7 +176,4 @@ exports.updateUser = function(req, res) {
             console.log(error);
         })
     }
-
-
-   
 }
