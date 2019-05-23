@@ -1,0 +1,64 @@
+<div class="container">
+        <form [formGroup]="registerForm" (submit)="register()" id="register-form">
+            <div id="personal-info-group">
+                <h4>Personlig information</h4>
+                <div id="name-group">
+                    <label for="first-name">Namn</label>
+                    <input formControlName="firstName" type="text" name="first-name" id="first-name" placeholder="Förnamn">
+                    <input formControlName="lastName" type="text" name="last-name" id="last-name" placeholder="Efternamn">
+                </div>
+                <div id="birth-group">
+                    <label for="birth-date">Födelsedatum: </label>
+                    <input formControlName="birthDate" type="date" name="birth-date" id="birth-date">
+                </div>
+            </div>
+            <hr>
+            <div id="login-info-group">
+                <h4>Kontoinformation</h4>
+                <div id="email-group">
+                    <label for="email">E-postadress:</label>
+                    <input formControlName="email" type="email" name="email" id="email">
+                </div>
+                <div id="password-group">
+                    <label for="password">Lösenord:</label>
+                    <input formControlName="password" type="password" name="password" id="password">
+                </div>
+            </div>
+            <hr>
+            <div id="address-info-group">
+                <div id="billing-group">
+                    <h4>Faktureringsadress</h4>
+                    <label for="billing-address">Adress:</label>
+                    <input formControlName="billingAddress" type="text" name="billing-address" id="billing-address">
+                    <label for="billing-postal-number">Postnummer:</label>
+                    <input formControlName="billingPostalNumber" type="text" name="billing-postal-number" id="billing-postal-number">
+                    <label for="billing-city">Stad:</label>
+                    <input formControlName="billingCity" type="text" name="billing-city" id="billing-city">
+                    <label for="billing-country">Land:</label>
+                    <input formControlName="billingCountry" type="text" name="billing-country" id="billing-country">
+                </div>
+                <div id="shipping-group">
+                    <h4>Postadress</h4>
+                    <div id="same-address-container">
+                        <input type="checkbox" name="same" id="same" (change)="cloneBillingAddress()">
+                        <label for="same" class="inline"> Samma som faktureringsadressen</label>
+                    </div>
+                    <label for="shipping-address">Adress:</label>
+                    <input formControlName="shippingAddress" type="text" name="shipping-address" id="shipping-address">
+                    <label for="shipping-postal-number">Postnummer:</label>
+                    <input formControlName="shippingPostalNumber" type="text" name="shipping-postal-number" id="shipping-postal-number">
+                    <label for="shipping-city">Stad:</label>
+                    <input formControlName="shippingCity" type="text" name="shipping-city" id="shipping-city">
+                    <label for="shipping-country">Land:</label>
+                    <input formControlName="shippingCountry" type="text" name="shipping-country" id="shipping-country">
+                </div>
+            </div>
+            <hr>
+            <div id="button-group">
+                <button class="button dark" type="submit" [disabled]="!registerForm.valid">Registrera</button>
+            </div>
+            <div *ngIf="error" class="warning">
+                Det finns redan ett konto med den e-postadressen registrerad.
+            </div>
+        </form>
+</div>

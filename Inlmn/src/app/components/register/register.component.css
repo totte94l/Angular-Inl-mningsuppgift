@@ -1,0 +1,45 @@
+label { display:block }
+
+#register-form {
+    background: rgba(75, 75, 75, 0.4);
+    padding: 20px;
+    width: 400px;
+
+    background: rgba(109, 109, 109, 0.1);
+    color: rgb(45, 45, 45);    
+    border-radius: 20px;
+}
+
+.container {
+    display: grid;
+    justify-content: center;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"] {
+    border: none;
+    line-height: 27px;
+    font-size: 15px;
+    border-bottom: 1px solid rgba(1, 1, 1, 0.2);
+    border-radius: 10px;
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+
+    padding-left: 10px;
+}
+
+#same-address-container {
+    margin-bottom: 15px;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

@@ -1,0 +1,57 @@
+html {
+    font-family: 'Open Sans', sans-serif;
+}
+body {
+    height: 100%;
+    display: grid;
+
+    background: rgb(255, 250, 250);
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+.button {
+    justify-self: center;
+    align-self: center;
+    border: none;
+    width: 200px;
+    height: 50px;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+    .button:disabled {
+        color: rgb(102, 102, 102);
+        cursor: default;
+    }
+
+    .button.dark:active:enabled {
+        background-color: #444;
+    }
+
+    .button.success:active:enabled {
+        background-color: rgb(35, 173, 81);
+    }
+
+.link-default {
+    text-decoration: none;
+    color: rgb(44, 119, 138);
+}
+
+.warning {
+    color: rgb(216, 74, 74) !important;
+}
+
+.dark {
+    background-color: #333;
+    color: rgb(216, 216, 216);
+}
+
+.success {
+    background-color: rgb(37, 204, 93);
+    color: rgb(216, 216, 216);
+}
+
+.full-w { width: 90% }
+.inline { display: inline !important}

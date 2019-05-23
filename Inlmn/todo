@@ -1,0 +1,22 @@
+Du ska göra ordning en hemsida som har funktionaliteten som beskriv här nedan. 
+Denna sida ska vara skriven i Angular. Inlämning av uppgiften ska ske genom en github länk
+som läggs in under inlämningsuppgift 1 på yh.pingpong.se. 
+
+Du ska göra följande:
+
+* Hemsidan ska ha följande länkar: startsida, logga in, registrera, profilsida
+* Det ska kunna gå och registrera en användare som sparas ner i en NoSQL databas. Förslagsvis MongoDB.
+X Det ska kunna gå och logga in med denna användare och gå in på profilsidan för användaren.
+* På profilsidan ska användarens information såsom
+    - Förnamn, Efternamn, eventuellt ett mellannamn
+    - Födelsedatum
+    - Faktureringsadress, postnummer och ort, samt land
+    - Leveransadress, postnummer och ort samt land (ska vara möjligt att använda samma som Faktureringsadressen)
+    - E-postadress och lösenord
+* Epostadressen ska kunna bytas samma sak med lösenordet.
+* Lösenordet ska vara hashat och får inte sparas i klartext.
+* Det ska vara möjligt att kunna editera informationen på profilsidan. Om du gör det på en och samma sida, eller
+  två skiljda sidor det är helt upp till dig.
+* det ska även kunna gå och logga ut. När du är inloggad ska du inte kunna komma åt registrerasidan eller loggainsidan.
+* Användaren fullständiga namn ska skrivas ut längst upp på sidan.
+* Det ska kunna gå och navigera mellan sidorna. 
