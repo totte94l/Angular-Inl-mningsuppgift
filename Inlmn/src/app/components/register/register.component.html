@@ -56,6 +56,7 @@
             <hr>
             <div id="button-group">
                 <button class="button dark" type="submit" [disabled]="!registerForm.valid">Registrera</button>
+                <div style="margin-top: 10px;">Har du ett konto redan? <a routerLink="/">Logga in</a></div>
             </div>
             <div *ngIf="error" class="warning">
                 Det finns redan ett konto med den e-postadressen registrerad.

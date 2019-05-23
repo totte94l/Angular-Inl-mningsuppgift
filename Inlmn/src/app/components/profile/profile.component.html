@@ -1,7 +1,9 @@
 <div class="container">
     <div id="profile" *ngIf="user">
-      <span>Välkommen Christoffer Cajander!</span>
-      <span style="float: right" (click)="logout()">Logga ut <i class="fas fa-sign-out-alt"></i></span>
+      <div>
+          <h1>Välkommen {{ user.firstName }} {{ user.lastName }}!</h1>
+          <span id="logout" style="float: right" (click)="logout()">Logga ut <i class="fas fa-sign-out-alt"></i></span>
+      </div>
       <div id="profile-info" class="profile-info" *ngIf="!editingInfo">
         <fieldset>
             <legend><i class="far fa-id-card"></i> Kontoinformation</legend>
@@ -69,7 +71,6 @@
               </div>
               <hr>
               <button class="button success" type="submit"><i class="fas fa-save"></i> Spara</button>
-              <button type="button" (click)="test()">testknappeN</button>
           </fieldset>
         </form>
       </div>

@@ -120,14 +120,47 @@ exports.getUser = function(req, res) {
 }
 
 exports.updateUser = function(req, res) {
-    console.log(req.body.firstName);
-    User
+    if( req.body.password.length > 0 ) {
+        console.log("Bytte Lösenord")
+        encrypt.hash(req.body.password, 10, function(error, hash) {
+            if(error) {
+                return res.status(500).json({
+                    error: error,
+                    message: "Error | failed to encrypt password"
+                })
+            }
+            else {
+                User
+                .updateOne({ _id:req.params.id },
+                {$set: {
+                    firstName: req.body.firstName,
+                    lastName: req.body.lastName,
+                    email: req.body.email,
+                    password: hash,
+                    billingAddress: req.body.billingAddress,
+                    billingPostalNumber: req.body.billingPostalNumber,
+                    billingCity: req.body.billingCity,
+                    billingCountry: req.body.billingCountry,
+                    shippingAddress: req.body.shippingAddress,
+                    shippingPostalNumber: req.body.shippingPostalNumber,
+                    shippingCity: req.body.shippingCity,
+                    shippingCountry: req.body.shippingCountry
+                }})
+                .then( result => {
+                    res.json({succes: true});
+                })
+                .catch(function(error, affected, resp) {
+                    console.log(error);
+                })
+            }
+        });
+    } else {
+        User
         .updateOne({ _id:req.params.id },
         {$set: {
             firstName: req.body.firstName,
             lastName: req.body.lastName,
             email: req.body.email,
-            //Password
             billingAddress: req.body.billingAddress,
             billingPostalNumber: req.body.billingPostalNumber,
             billingCity: req.body.billingCity,
@@ -137,12 +170,24 @@ exports.updateUser = function(req, res) {
             shippingCity: req.body.shippingCity,
             shippingCountry: req.body.shippingCountry
         }})
+        .then( result => {
+            res.json({succes: true});
+        })
         .catch(function(error, affected, resp) {
             console.log(error);
         })
+    }
+
+
+   
 }
 
 
-// restricted
-/* exports.getUsers = function(req, res) {}
-exports.deleteUser = function(req, res) {} */
+/* encrypt.hash(req.body.password, 10, function(error, hash) {
+    if(error) {
+        return res.status(500).json({ 
+            error: error,
+            message: ` ${req.body.email}`
+        });
+    }
+    else { */

@@ -2,9 +2,13 @@
     padding: 20px;
     border-radius: 20px;
     background: rgba(175, 175, 175, 0.1);
-    height: 80vh;
+    height: auto;
+    color: #333;
 }
 
+h1 {
+    display: inline-block;
+}
 .profile-info {
     width: 400px;
     padding: 20px;
@@ -27,4 +31,8 @@ fieldset {
     border-bottom: 1px solid rgba(53, 53, 53, 0.3);
     background: none;
     font-size: 16px;
+}
+
+#logout {
+    cursor: pointer;
 }

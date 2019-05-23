@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
+import { __await } from 'tslib';
 
 @Component({
   selector: 'app-profile',
@@ -34,7 +35,6 @@ export class ProfileComponent implements OnInit {
       'shippingCity': [''],
       'shippingCountry': ['']
     })
-  
   }
 
   isLoggedIn = () => {
@@ -50,11 +50,6 @@ export class ProfileComponent implements OnInit {
     this.authService.logout();
     this.isLoggedIn();
   }
-  
-  test() {
-    console.log(this.editForm.value);
-  }
-
 
   getInfo() {
     this.authService.getUser()
@@ -72,12 +67,20 @@ export class ProfileComponent implements OnInit {
         editForm["shippingPostalNumber"].setValue(res[0].shippingPostalNumber);
         editForm["shippingCity"].setValue(res[0].shippingCity);
         editForm["shippingCountry"].setValue(res[0].shippingCountry);
+
+        localStorage.setItem("USER_EMAIL", this.user["email"]);
       }))
     }
 
     updateInfo() {
-      this.authService.updateUser(this.editForm.value).subscribe((resp) => {
-       this.getInfo();
+      this.authService.updateUser(this.editForm.value).subscribe(data => {
+        const values = Object.keys(data).map(key => data[key]);
+        const success = values.join(",");
+
+        if(success) {
+          this.editingInfo = false;
+          this.getInfo();
+        }
       })
     }
 }
