@@ -51,6 +51,11 @@ export class ProfileComponent implements OnInit {
     this.isLoggedIn();
   }
 
+  cancel() {
+    this.getInfo()
+    this.editingInfo = false;
+  }
+
   getInfo() {
     this.authService.getUser()
       .subscribe((res => {

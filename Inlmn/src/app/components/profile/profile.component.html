@@ -70,7 +70,10 @@
                 </div>
               </div>
               <hr>
-              <button class="button success" type="submit"><i class="fas fa-save"></i> Spara</button>
+              <div id="button-container">
+                <button class="button success" type="submit"><i class="fas fa-save"></i> Spara</button>
+                <button class="button dark" type="button" (click)="cancel()"><i class="far fa-window-close"></i> Avbryt</button>
+              </div>
           </fieldset>
         </form>
       </div>

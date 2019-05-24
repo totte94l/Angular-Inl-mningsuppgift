@@ -1,12 +1,10 @@
 label { display:block }
 
 #register-form {
-    background: rgba(75, 75, 75, 0.4);
     padding: 20px;
     width: 400px;
 
-    background: rgba(109, 109, 109, 0.1);
-    color: rgb(45, 45, 45);    
+    color: rgb(235, 235, 235);
     border-radius: 20px;
 }
 
@@ -30,6 +28,7 @@ input[type="date"] {
     margin-right: 10px;
 
     padding-left: 10px;
+    font-weight: 500;
 }
 
 #same-address-container {
