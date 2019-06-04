@@ -3,6 +3,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 import { __await } from 'tslib';
+import { User } from '../../user'
 
 @Component({
   selector: 'app-profile',
@@ -13,7 +14,7 @@ export class ProfileComponent implements OnInit {
 
   editForm: any;
   editingInfo: boolean = false;
-  user:object;
+  user: User;
 
   constructor(private authService: AuthService, private router: Router, private formBuilder: FormBuilder) { }
 
